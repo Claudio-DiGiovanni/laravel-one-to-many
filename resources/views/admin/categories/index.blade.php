@@ -13,10 +13,10 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Slug</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Azioni</th>
+                    <th class="text-center" scope="col">ID</th>
+                    <th class="text-center" scope="col">Slug</th>
+                    <th class="text-center" scope="col">Nome</th>
+                    <th class="text-center" scope="col">Azioni</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,10 +26,10 @@
                         <td>{{ $category->slug }}</td>
                         <td>{{ $category->name }}</td>
 
-                        <td>
-                            <a href="{{ route('admin.categories.show', ['category' => $category]) }}" class="btn btn-primary">Visita</a>
-                            <a href="{{ route('admin.categories.edit', ['category' => $category]) }}" class="btn btn-warning">Edita</a>
-                            <form action="{{ route('admin.categories.destroy', ['category' => $category]) }}" method="category">
+                        <td class="d-flex justify-content-around">
+                            <a href="{{ route('admin.categories.show', ['category' => $category]) }}" class="btn btn-primary mx-5">Visita</a>
+                            <a href="{{ route('admin.categories.edit', ['category' => $category]) }}" class="btn btn-warning mx-5">Edita</a>
+                            <form action="{{ route('admin.categories.destroy', ['category' => $category]) }}" method="post">
                                 @method('DELETE')
                                 @csrf
                                 <button class="btn btn-danger btn-delete-me">Elimina</button>

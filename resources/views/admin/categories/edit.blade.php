@@ -50,7 +50,7 @@
             </div>
 
             <div class="col-12">
-                <button class="btn btn-primary" type="submit">Crea</button>
+                <button class="btn btn-primary" type="submit">Modifica</button>
             </div>
         </form>
     </div>
