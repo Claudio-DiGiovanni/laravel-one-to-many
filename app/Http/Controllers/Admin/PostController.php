@@ -88,6 +88,7 @@ class PostController extends Controller
         $post->slug          = $data['slug'];
         $post->title         = $data['title'];
         $post->image         = $data['image'];
+        $post->category_id   = $data['category_id'];
         $post->uploaded_img  = $img_path;
         $post->content       = $data['content'];
         $post->excerpt       = $data['excerpt'];
