@@ -17,6 +17,7 @@
                         <th scope="row">{{ $post->id }}</th>
                         <td>{{ $post->slug }}</td>
                         <td>{{ $post->title }}</td>
+                        <td>{{ $post->category->name }}</td>
 
                        @auth
                         <td>

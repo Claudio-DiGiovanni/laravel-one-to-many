@@ -32,6 +32,6 @@ Route::middleware('auth')
     ->prefix('admin')
     ->group(function () {
         Route::get('/', 'PageController@index')->name('home');
-        Route::get('/response', 'OpenAIController@generateText')->name('response');
+        Route::resource('categories', 'CategoryController');
         Route::resource('posts', 'PostController');
 });
