@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    private $validations = [
+        'slug' => 'required|string|max:100',
+        'name' => 'required|string|max:100',
+        'description' => 'string',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +32,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -38,7 +43,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validations);
+        $data = $request->all();
+        $category = new Category;
+        $category->slug = $data['slug'];
+        $category->name = $data['name'];
+        $category->description = $data['description'];
+        $category->save();
+        return redirect()->route('admin.categories.show', ['category' => $category]);
     }
 
     /**
@@ -60,7 +72,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -72,7 +84,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate($this->validations);
+        $data = $request->all();
+        $category->slug = $data['slug'];
+        $category->name = $data['name'];
+        $category->description = $data['description'];
+        $category->update();
+        return redirect()->route('admin.categories.show', ['category' => $category]);
     }
 
     /**
@@ -83,6 +101,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('admin.categories.index');
     }
 }
